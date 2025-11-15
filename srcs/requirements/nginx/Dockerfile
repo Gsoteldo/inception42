@@ -9,16 +9,19 @@
     # CMD <comando_por_defecto_en_json>
 
 # Ultima version es 3.22.2 al momento de hacerlo
-FROM debian:trixie
+# FROM debian:trixie
+FROM alpine:3.21
 
 # Al estar basado en Alpine, usamos apk para instalar nginx y openssl
-RUN apt-get update && apt-get install -y nginx
+# RUN apt-get update && apt-get install -y nginx
+RUN apk update && apk add --no-cache nginx openssl
 
 # Hay que crear el directorio /run/nginx para que Nginx pueda crear su archivo PID
-# RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx
 
 # # Copiamos el archivo de configuración personalizado y el contenido HTML
-COPY ./default /etc/nginx/sites-available/.
+COPY ./default.conf /etc/nginx/http.d/.
+# RUN mkdir -p /run/nginx
 
 # # Exponemos el puerto 80 para HTTP
 EXPOSE 80
