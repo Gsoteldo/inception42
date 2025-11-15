@@ -1,0 +1,22 @@
+services:
+  nginx:
+    build: ./requirements/nginx/.
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - /home/gsoteldo/data/web:/var/www/html
+      
+  wordpress:
+    build: ./requirements/wordpress/.
+    container_name: wp-php
+    volumes:
+      - /home/gsoteldo/data/web:/var/www/html
+  mariadb:
+    build: ./requirements/mariadb/.
+    container_name: mariadb
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    
