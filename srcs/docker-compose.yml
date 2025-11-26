@@ -2,21 +2,43 @@ services:
   nginx:
     build: ./requirements/nginx/.
     container_name: nginx
+    restart: on-failure
     ports:
-      - "80:80"
+      - "443:443"
     volumes:
       - /home/gsoteldo/data/web:/var/www/html
-      
+    networks:
+      - inception-network
+    depends_on:
+      - wordpress
+
   wordpress:
     build: ./requirements/wordpress/.
     container_name: wp-php
+    restart: on-failure
+    env_file:
+      - .env
     volumes:
       - /home/gsoteldo/data/web:/var/www/html
+    networks:
+      - inception-network
+    depends_on:
+      - mariadb
+
   mariadb:
     build: ./requirements/mariadb/.
     container_name: mariadb
+    restart: on-failure
     env_file:
       - .env
     ports:
       - "3306:3306"
-    
+    volumes:
+      - /home/gsoteldo/data/mariadb:/var/lib/mysql
+    networks:
+      - inception-network
+
+networks:
+  inception-network:
+    driver: bridge
+

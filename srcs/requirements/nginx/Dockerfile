@@ -17,14 +17,18 @@ FROM alpine:3.21
 RUN apk update && apk add --no-cache nginx openssl
 
 # Hay que crear el directorio /run/nginx para que Nginx pueda crear su archivo PID
-RUN mkdir -p /run/nginx
+RUN mkdir -p /run/nginx /etc/nginx/ssl
+
+COPY ./tools/generate-ssl.sh /generate-ssl.sh
+RUN chmod +x /generate-ssl.sh
+RUN /generate-ssl.sh
 
 # # Copiamos el archivo de configuración personalizado y el contenido HTML
 COPY ./default.conf /etc/nginx/http.d/.
 # RUN mkdir -p /run/nginx
 
 # # Exponemos el puerto 80 para HTTP
-EXPOSE 80
+EXPOSE 443
 
 # Comando por defecto para ejecutar Nginx en primer plano
 # Ya que Nginx por defecto se ejecuta en segundo plano (daemon)
