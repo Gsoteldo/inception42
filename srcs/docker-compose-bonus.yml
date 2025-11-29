@@ -1,0 +1,14 @@
+services:
+  nginx:
+    build: ./bonus/nginx-bonus/.
+    image: nginx:latest
+    container_name: nginx
+    restart: on-failure
+    ports:
+      - "443:443"
+    volumes:
+      - /home/gsoteldo/data/web:/var/www/html
+    # networks:
+    #   - inception-network
+    # depends_on:
+    #   - wordpress

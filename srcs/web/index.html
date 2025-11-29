@@ -1,2 +1,130 @@
-<h1>Funciona!! Hola mundo</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriel Soteldo - Portafolio</title>
+  <style>
+    /* Reset básico */
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background-color: #f4f4f4; color: #333; line-height: 1.6; }
 
+    header {
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 { font-size: 2.5em; margin-bottom: 10px; }
+    header p { font-size: 1.2em; }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      background-color: #34495e;
+      padding: 10px 0;
+    }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    section { padding: 40px 20px; max-width: 900px; margin: auto; }
+
+    h2 { color: #2c3e50; margin-bottom: 20px; }
+    .skills, .experience { display: flex; flex-wrap: wrap; gap: 20px; }
+    .card {
+      background: #fff;
+      padding: 20px;
+      flex: 1 1 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #2c3e50;
+      color: #fff;
+      margin-top: 40px;
+    }
+
+    /* Botón de contacto */
+    .contact-btn {
+      display: inline-block;
+      background: #e74c3c;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+    .contact-btn:hover { background: #c0392b; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gabriel Soteldo</h1>
+    <p>Desarrollador Multiplataforma & Entusiasta de Tecnología</p>
+  </header>
+
+  <nav>
+    <a href="#about">Sobre mí</a>
+    <a href="#skills">Habilidades</a>
+    <a href="#experience">Experiencia</a>
+    <a href="#contact">Contacto</a>
+  </nav>
+
+  <section id="about">
+    <h2>Sobre mí</h2>
+    <p>Soy un desarrollador apasionado por crear soluciones innovadoras y eficientes. Me gusta aprender nuevas tecnologías y aplicar mis conocimientos en proyectos reales.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Habilidades</h2>
+    <div class="skills">
+      <div class="card">
+        <h3>Lenguajes</h3>
+        <p>C, C++, Python, JavaScript, HTML, CSS</p>
+      </div>
+      <div class="card">
+        <h3>Frameworks</h3>
+        <p>React, Next.js, Tailwind, Node.js</p>
+      </div>
+      <div class="card">
+        <h3>Otras</h3>
+        <p>Git, Docker, Supabase, Desarrollo de Apps</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experiencia</h2>
+    <div class="experience">
+      <div class="card">
+        <h3>Mándalo Xpress</h3>
+        <p>Emprendimiento de envíos dentro de Madrid, especializado en tartas y postres.</p>
+      </div>
+      <div class="card">
+        <h3>Proyectos en 42</h3>
+        <p>Inception, WebServer, Trascendence, desarrollo de aplicaciones y páginas web.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contacto</h2>
+    <p>Puedes contactarme vía correo electrónico o LinkedIn.</p>
+    <a class="contact-btn" href="mailto:gabriel@email.com">Enviar email</a>
+  </section>
+
+  <footer>
+    &copy; 2025 Gabriel Soteldo
+  </footer>
+
+</body>
+</html>

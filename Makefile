@@ -23,11 +23,10 @@ clean: down
 fclean: clean
 	docker system prune -a --volumes -f
 
-logs:
-	docker compose -f srcs/docker-compose.yml logs -f
-
 restart: down up
 
-ps:
-	docker ps -a
-.PHONY: all build up down re clean fclean logs restart ps
+bonus:
+	@docker compose -f srcs/docker-compose-bonus.yml build --no-cache
+	@docker compose -f srcs/docker-compose-bonus.yml up -d
+
+.PHONY: all build up down re clean fclean restart
