@@ -26,7 +26,21 @@ fclean: clean
 restart: down up
 
 bonus:
-	@docker compose -f srcs/docker-compose-bonus.yml build --no-cache
-	@docker compose -f srcs/docker-compose-bonus.yml up -d
+	@docker compose -f srcs/docker-compose.yml -f srcs/docker-compose-bonus.yml build --no-cache
+	@docker compose -f srcs/docker-compose.yml -f srcs/docker-compose-bonus.yml up -d
+
+re-bonus: down
+	@docker compose -f srcs/docker-compose.yml -f srcs/docker-compose-bonus.yml build --no-cache
+	@docker image prune -f
+	@docker compose -f srcs/docker-compose.yml -f srcs/docker-compose-bonus.yml up -d
+
+clean-bonus: down
+	@docker ps -aq | xargs -r docker rm -f 2>/dev/null || true
+	@docker images -q | xargs -r docker rmi -f 2>/dev/null || true
+	@docker volume ls -q | xargs -r docker volume rm 2>/dev/null || true
+
+fclean-bonus: clean-bonus
+	@docker system prune -a --volumes -f
+
 
 .PHONY: all build up down re clean fclean restart

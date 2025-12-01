@@ -1,8 +1,9 @@
 services:
   nginx:
-    build: ./bonus/nginx-bonus/.
-    image: nginx:latest
+    build: ./requirements/nginx/.
     container_name: nginx
+    environment:
+      - NGINX_MODE=bonus
     restart: on-failure
     ports:
       - "443:443"

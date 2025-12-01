@@ -10,7 +10,7 @@
 
 # Ultima version es 3.22.2 al momento de hacerlo
 # FROM debian:trixie
-FROM alpine:3.21
+FROM alpine:3.19
 
 # Al estar basado en Alpine, usamos apk para instalar nginx y openssl
 # RUN apt-get update && apt-get install -y nginx
@@ -24,12 +24,17 @@ RUN chmod +x /generate-ssl.sh
 RUN /generate-ssl.sh
 
 # # Copiamos el archivo de configuración personalizado y el contenido HTML
+COPY ./web/index.html /var/www/html/index.html
 COPY ./default.conf /etc/nginx/http.d/.
+COPY ./default-bonus.conf /etc/nginx/http.d/.
 # RUN mkdir -p /run/nginx
+
+COPY ./tools/script.sh /script.sh
+RUN chmod +x /script.sh
 
 # # Exponemos el puerto 80 para HTTP
 EXPOSE 443
 
 # Comando por defecto para ejecutar Nginx en primer plano
 # Ya que Nginx por defecto se ejecuta en segundo plano (daemon)
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/script.sh"]
