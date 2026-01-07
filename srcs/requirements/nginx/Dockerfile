@@ -24,7 +24,8 @@ RUN chmod +x /generate-ssl.sh
 RUN /generate-ssl.sh
 
 # # Copiamos el archivo de configuración personalizado y el contenido HTML
-COPY ./web/index.html /var/www/html/index.html
+RUN mkdir -p /var/www/static
+COPY ./web/index.html /var/www/static/index.html
 COPY ./default.conf /etc/nginx/http.d/.
 COPY ./default-bonus.conf /etc/nginx/http.d/.
 # RUN mkdir -p /run/nginx
