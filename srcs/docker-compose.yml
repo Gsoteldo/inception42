@@ -6,7 +6,7 @@ services:
     ports:
       - "443:443"
     volumes:
-      - /home/gsoteldo/data/web:/var/www/html
+      - wp_data:/var/www/html:ro
     networks:
       - inception-network
     depends_on:
@@ -19,7 +19,7 @@ services:
     env_file:
       - .env
     volumes:
-      - /home/gsoteldo/data/web:/var/www/html
+      - wp_data:/var/www/html
     networks:
       - inception-network
     depends_on:
@@ -34,9 +34,27 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /home/gsoteldo/data/mariadb:/var/lib/mysql
+      - db_data:/var/lib/mysql
     networks:
       - inception-network
+
+
+volumes:
+  # Volumen Docker para los archivos de WordPress
+  wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gsoteldo/data/web
+      o: bind
+
+  # Volumen Docker para la base de datos
+  db_data:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/gsoteldo/data/mariadb
+      o: bind
 
 networks:
   inception-network:
