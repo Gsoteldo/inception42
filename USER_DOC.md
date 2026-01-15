@@ -18,7 +18,6 @@
 2. Configura el archivo `.env` con tus datos:
   - Usuario y contraseña de MariaDB
   - Usuario y contraseña de WordPress
-  - (Opcional) Datos para servicios bonus si los agregas
 
 3. Levanta los servicios principales:
    ```bash
@@ -33,22 +32,12 @@
 
 ## Servicios bonus
 
-Actualmente la carpeta `srcs/requirements/bonus/` está vacía. Si agregas servicios extra (FTP, Adminer, etc):
+Si agregas servicios extra (FTP, Adminer, etc):
 
 - Actívalos con:
   ```bash
   make bonus
   ```
-
-- Acceso a Adminer (si lo agregas):
-  ```
-  https://gsoteldo.42.fr/adminer
-  ```
-
-- Acceso FTP (si lo agregas):
-  - Host: `gsoteldo.42.fr`
-  - Puerto: `21`
-  - Usuario/contraseña: definidos en `.env`
 
 ## Comandos útiles
 

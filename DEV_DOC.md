@@ -17,7 +17,6 @@
   - `Dockerfile`: Imagen de MariaDB
   - `mariadb-server.cnf`: Configuración personalizada de MariaDB
   - `tools/setup.sh`: Script de inicialización de la base de datos y usuarios
-- `srcs/requirements/bonus/`: (Vacío actualmente; aquí se agregan servicios extra como FTP, Adminer, etc.)
 - `srcs/docker-compose.yml`: Orquestación principal (Nginx, WordPress, MariaDB)
 - `srcs/docker-compose-bonus.yml`: Orquestación extendida para bonus (modifica variables de entorno)
 - `srcs/.env`: Variables de entorno sensibles (usuarios, contraseñas, etc.)
@@ -59,7 +58,7 @@ Estos scripts aseguran que cada contenedor esté correctamente configurado y lis
 
 ## Cómo agregar un servicio bonus
 
-Actualmente, la carpeta `srcs/requirements/bonus/` está vacía. Para agregar un servicio extra (por ejemplo, FTP, Adminer, etc):
+Para agregar un servicio extra (por ejemplo, FTP, Adminer, etc):
 
 1. Crea una carpeta en `srcs/requirements/bonus/<servicio>/`.
 2. Añade un `Dockerfile` y los archivos de configuración necesarios para ese servicio.
